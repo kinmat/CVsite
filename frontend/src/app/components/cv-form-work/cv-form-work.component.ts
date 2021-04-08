@@ -26,7 +26,7 @@ export class CvFormWorkComponent implements OnInit {
   
  @ViewChild(DynamicComponent) dynamicComponent:DynamicComponent;  
  
-  addComponent(widget: string ): void{                         
+  addComponent(widget: string): void{
     let ref= this.dynamicComponent.addComponent(this.WidgetClasses[widget]);    
     this.elements.push(ref); 
     console.log(this.elements);
@@ -51,7 +51,7 @@ export class CvFormWorkComponent implements OnInit {
     this.elements.forEach((comp) => {
     //  let work = this.workDeepcopy(comp.getWork());
     //  console.log(comp.getWork());
-    //  this.workService.addWork(comp.work).subscribe();
+      this.workService.addWork(comp.work).subscribe();
     });
 
     this.router.navigate(['/fill-form/education']);

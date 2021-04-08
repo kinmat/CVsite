@@ -13,8 +13,8 @@ import { FormGroupDirective } from '@angular/forms';
 })
 export class WorkExperienceComponent  {
   @ViewChild('documentEditForm') documentEditForm: FormGroupDirective; 
-  model: NgbDateStruct;
-  //from: NgbDateStruct;
+  toDate: NgbDateStruct;
+  fromDate: NgbDateStruct;
   countryList: string[];
   work: WorkExp;
 
@@ -28,14 +28,18 @@ export class WorkExperienceComponent  {
   }
 
   onSubmit() {
-    console.log("hiiii");
+    console.log("OnSubmit");
     this.workService.addWork(this.work).subscribe();
   }
 
-  onDateSelection(date: NgbDate) {
+  onFromSelection(date: NgbDate) {
     console.log(date);
-    this.work.to = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
     this.work.from=new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
+  }
+
+  onToSelection(date: NgbDate) {
+    console.log(date);
+    this.work.to=new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
   }
   
   
