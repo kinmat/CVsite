@@ -1,0 +1,15 @@
+<div class="m-2">
+    <h1>2. Work experience</h1>
+</div>
+<app-dynamic [hidden]="true" ></app-dynamic>  
+
+<app-work-experience *ngFor="let item of elements">
+    <div>{{item}}</div>
+</app-work-experience> 
+<button class="btn btn-light btn-block" (click)="addComponent('WorkExperience')">Add New Work Experience</button>
+
+<form (ngSubmit)="onSubmit()">
+<div class="m-2 justify-content-center">
+    <button type="submit" class="btn btn-primary">Next step</button>  
+</div>
+</form>

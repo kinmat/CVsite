@@ -1,0 +1,53 @@
+<div class="card m-2">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="position">Position</label>
+                  <input [(ngModel)]="work.position" name="position" type="text" class="form-control" id="position" placeholder="Position title">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="employer">Employer</label>
+                  <input [(ngModel)]="work.employer" name="employer" type="text" class="form-control" placeholder="Employer" id="employer">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd"
+                             name="dp" [(ngModel)]="model" (dateSelect)="onDateSelection($event)" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control"
+                    [(ngModel)]="work.city" name="city" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputCountry">Country</label>
+                    <select [(ngModel)]="work.country" name="country" id="inputCountry" class="form-control">
+                      <option *ngFor="let country of countryList" [value]="country">{{country}}</option>
+                    </select> 
+                </div>  
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea [(ngModel)]="work.description"  name="description" class="form-control" id="description" rows="3"></textarea>
+              </div>
+            
+            <div class="form-row">
+                <label class="btn-light" ngbButtonLabel>
+                    <input [(ngModel)]="work.ongoing" name="ongoing" type="checkbox" name="checkbox" ngbButton [(ngModel)]="work.ongoing"> Ongoing
+                </label>
+            </div>
+            <button name="submitButton" class="btn-save button primary"
+            (click)="documentEditForm.ngSubmit.emit()"
+            [disabled]="!documentEditForm.form.valid">SAVE</button>
+        </form>
+    </div>
+</div>
