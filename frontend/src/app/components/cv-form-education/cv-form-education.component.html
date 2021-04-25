@@ -1,90 +1,38 @@
 <div class="m-2">
     <h1>3. Education</h1>
-  </div>
-  <div class="card">
-  <div class="card-body">
-      <form (ngSubmit)="onSubmit()">
-          <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="first-name">First name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="First name" required>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="last-name">Last name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Last name" required>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="username">Username</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-                </div>
-              </div>
-            </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-              </div>
-              <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputCountry">Country</label>
-                  <select id="inputCountry" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-              </div>  
-          <div class="form-row">
-              <div class="form-group col-md-4">
-                
-                      <label for="inputBirthdate">Birthdate</label>
-                  <div class="input-group">               
-                    <input id="inputBirthdate" class="form-control" placeholder="yyyy-mm-dd"
-                           name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                    </div>
-                  </div>
-              </div>
-              <div class="form-group col-md-4">
-                  <label for="inputGender">Gender</label>
-                  <select id="inputGender" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                    <option>Prefer not to say</option>
-                  </select>
-              </div> 
-          </div>
-                 
-    <div class="m-2 justify-content-center">
-        <button type="submit" class="btn btn-primary">Next step</button>  
+   <div>Describe all your learning experiences here.
+    Include any type of learning experience (university, vocational training,
+     online courses, professional development).</div> 
+</div>
+
+  <div *ngFor="let item of edus">
+    <div class="card m-2">
+        <div class="card-body">
+            <ng-template [ngIf]="item.title">
+                <p> <strong>Title: </strong> {{item.title}}</p></ng-template> 
+            <ng-template [ngIf]="item.org">
+                <p> <strong>Organization: </strong> {{item.org}}</p></ng-template> 
+            <ng-template [ngIf]="item.from">
+                <p> <strong>Worked from: </strong> {{item.from}}</p></ng-template> 
+            <ng-template [ngIf]="item.to">
+                <p> <strong>To: </strong> {{item.to}}</p></ng-template> 
+            <ng-template [ngIf]="item.city">
+                <p> <strong>City: </strong> {{item.city}}</p></ng-template>         
+            <ng-template [ngIf]="item.country">
+                <p> <strong>Country: </strong> {{item.country}}</p></ng-template>         
+            <ng-template [ngIf]="item.description">
+                <p> <strong>Description: </strong> {{item.description}}</p></ng-template>        
+            <ng-template [ngIf]="item.inProgress">
+                <p> <strong>in Progress: </strong> {{item.inProgress}}</p></ng-template>                        
+        </div>
     </div>
-  </form>
-  </div>
-  </div>
+</div>
+
+<app-education (save)="onSaveWork($event)" >
+</app-education> 
+
+<form (ngSubmit)="onSubmit()">
+<div class="m-2 justify-content-center">
+    <button type="submit" class="btn btn-primary">Next step</button>  
+</div>
+</form>

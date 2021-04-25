@@ -1,12 +1,32 @@
 <div class="m-2">
     <h1>2. Work experience</h1>
 </div>
-<app-dynamic [hidden]="true" ></app-dynamic>  
 
-<app-work-experience *ngFor="let item of elements">
-   {{item}}
+<div *ngFor="let item of works">
+    <div class="card m-2">
+        <div class="card-body">
+            <ng-template [ngIf]="item.position">
+                <p> <strong>Postition: </strong> {{item.position}}</p></ng-template> 
+            <ng-template [ngIf]="item.employer">
+                <p> <strong>Employer: </strong> {{item.employer}}</p></ng-template> 
+            <ng-template [ngIf]="item.from">
+                <p> <strong>From: </strong> {{item.from}}</p></ng-template> 
+            <ng-template [ngIf]="item.to">
+                <p> <strong>To: </strong> {{item.to}}</p></ng-template> 
+            <ng-template [ngIf]="item.city">
+                <p> <strong>City: </strong> {{item.city}}</p></ng-template>         
+            <ng-template [ngIf]="item.country">
+                <p> <strong>Country: </strong> {{item.country}}</p></ng-template>         
+            <ng-template [ngIf]="item.description">
+                <p> <strong>Description: </strong> {{item.description}}</p></ng-template>        
+            <ng-template [ngIf]="item.ongoing">
+                <p> <strong>Ongoing: </strong> {{item.ongoing}}</p></ng-template>                        
+        </div>
+    </div>
+</div>
+
+<app-work-experience (save)="onSaveWork($event)" >
 </app-work-experience> 
-<button class="btn btn-light btn-block" (click)="addComponent('WorkExperience')">Add New Work Experience</button>
 
 <form (ngSubmit)="onSubmit()">
 <div class="m-2 justify-content-center">

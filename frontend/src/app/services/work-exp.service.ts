@@ -29,4 +29,8 @@ export class WorkExpService {
     return this.http.delete(`${this.url}/${id}`, {responseType: 'text'});
   }
 
+  public getWorkByUser(id: number): Observable<WorkExp[]> {
+    return this.http.get<WorkExp[]>(`${this.url}/user/${id}`);
+  }
+
 }

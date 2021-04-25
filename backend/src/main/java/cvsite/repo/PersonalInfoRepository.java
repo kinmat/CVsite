@@ -7,5 +7,6 @@ import cvsite.model.PersonalInfo;
 
 @Repository
 public interface PersonalInfoRepository extends JpaRepository<PersonalInfo, Long> {
+	PersonalInfo getByUserId(int userId);
 
 }

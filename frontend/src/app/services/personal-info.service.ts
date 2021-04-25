@@ -20,11 +20,12 @@ export class PersonalInfoService {
     return this.http.post(`${this.url}`, personalInfo);
   }
 
-  getPersonalInfo(userId: number): Observable<Object> {
-    return this.http.get(`${this.url}/${userId}`);
+  getPersonalInfo(userId: number): Observable<PersonalInfo> {
+    return this.http.get<PersonalInfo>(`${this.url}/user/${userId}`);
   }
 
   changePersonalInfo(pi: PersonalInfo) {
     this.personalInfo = pi;
   }
+
 }

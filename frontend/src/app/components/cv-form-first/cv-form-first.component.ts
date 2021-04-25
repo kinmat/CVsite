@@ -45,7 +45,7 @@ export class CvFormFirstComponent {
       console.log(this.user);
     this.userService.addUser(this.user).subscribe(data => {
       this.newUser = data;
-      this.userService.changeLoggedInUser(this.user);
+      this.userService.changeLoggedInUser(this.newUser);
       this.addPersonal();
     }); 
   }

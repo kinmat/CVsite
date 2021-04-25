@@ -1,6 +1,8 @@
+import { EducationService } from './../../services/education.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Education } from 'src/app/model/education';
 
 @Component({
   selector: 'app-cv-form-education',
@@ -9,14 +11,21 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CvFormEducationComponent implements OnInit {
   model: NgbDateStruct;
+  edus: Array<Education>=[];
+  constructor(private router: Router, private eduService: EducationService) { }
 
-  constructor(private route: ActivatedRoute,
-    private router: Router) { }
-  
-   ngOnInit(): void {
+  ngOnInit(): void {
   }
-  
+
   onSubmit() {
-      this.router.navigate(['/fill-form/skills']);   
+    this.edus.forEach((u) => {
+     this.eduService.addEdu(u).subscribe();
+    });
+    this.router.navigate(['/fill-form/skills']);
+  }
+
+  onSaveWork(edu: Education) {
+    this.edus.push(edu);
+    console.log(this.edus);
   }
 }

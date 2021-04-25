@@ -1,0 +1,64 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="card m-2">
+        <div class="card-body">
+            
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                      <label for="title">Title</label>
+                      <input [(ngModel)]="edu.title" name="title" type="text" class="form-control" id="title" placeholder="Qualification title">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="org">Organization that gave out the certification</label>
+                      <input [(ngModel)]="edu.org" name="org" type="text" class="form-control" placeholder="Organization" id="org">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dpFrom">From</label>
+                        <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd"
+                                 name="dpFrom" [(ngModel)]="fromDate" (dateSelect)="onFromSelection($event)" ngbDatepicker #dpFrom="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dpFrom.toggle()" type="button"></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="dpTo">To</label>
+                            <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd"
+                                 name="dpTo" [(ngModel)]="toDate" (dateSelect)="onToSelection($event)" ngbDatepicker #dpTo="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dpTo.toggle()" type="button"></button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control"
+                        [(ngModel)]="edu.city" name="city" id="inputCity">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputCountry">Country</label>
+                        <select [(ngModel)]="edu.country" name="country" id="inputCountry" class="form-control">
+                          <option *ngFor="let country of countryList" [value]="country">{{country}}</option>
+                        </select> 
+                    </div>  
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea [(ngModel)]="edu.description"  name="description" class="form-control" id="description" rows="3"></textarea>
+                  </div>
+                
+                <div class="form-row">
+                    <label class="btn-light" ngbButtonLabel>
+                        <input [(ngModel)]="edu.inProgress" name="inprogress" type="checkbox"
+                         name="checkbox" ngbButton [(ngModel)]="edu.inProgress"> in Progress
+                    </label>
+                </div> 
+        </div>
+      </div>
+      <button type="submit" name="submitButton" class="btn btn-light btn-block">Add New Education</button>
+    </form>

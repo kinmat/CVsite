@@ -1,6 +1,8 @@
+
+<form (ngSubmit)="onSubmit()">
 <div class="card m-2">
     <div class="card-body">
-        <form (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+        
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="position">Position</label>
@@ -55,10 +57,8 @@
                 <label class="btn-light" ngbButtonLabel>
                     <input [(ngModel)]="work.ongoing" name="ongoing" type="checkbox" name="checkbox" ngbButton [(ngModel)]="work.ongoing"> Ongoing
                 </label>
-            </div>
-            <button name="submitButton" class="btn-save button primary"
-            (click)="documentEditForm.ngSubmit.emit()"
-            [disabled]="!documentEditForm.form.valid">SAVE</button>
-        </form>
+            </div> 
     </div>
-</div>
+  </div>
+  <button type="submit" name="submitButton" class="btn btn-light btn-block">Add New Work Experience</button>
+</form>

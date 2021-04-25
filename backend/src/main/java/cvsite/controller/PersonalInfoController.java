@@ -33,6 +33,14 @@ public class PersonalInfoController {
     public PersonalInfo addPersonal(@RequestBody PersonalInfo personal){
     	return personalRepo.save(personal);
     }
+    
+    @RequestMapping("/personal/user/{id}")
+    public PersonalInfo getUsersPersonalInfo(@PathVariable("id") int id) {
+    	return personalRepo.getByUserId(id);
+    }
+
+    
+    
    
 
 }

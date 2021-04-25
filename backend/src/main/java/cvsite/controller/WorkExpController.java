@@ -1,5 +1,7 @@
 package cvsite.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +34,11 @@ public class WorkExpController {
     @PostMapping("/work")
     public WorkExp addWorkExp(@RequestBody WorkExp work){
     	return workRepo.save(work);
+    }
+    
+    @RequestMapping("/work/user/{id}")
+    public List<WorkExp> getWorkExpbyUser(@PathVariable("id") Long id) {
+        return workRepo.findByUserId(id);
     }
    
 

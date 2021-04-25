@@ -31,3 +31,30 @@ create TABLE personal_info (
 	gender NVARCHAR(MAX),
 	birthdate Date,
 );
+
+create TABLE education (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+	user_id int FOREIGN KEY REFERENCES user_data(id),
+    title NVARCHAR (100) NOT NULL,
+    org NVARCHAR (100) NOT NULL,
+	country NVARCHAR(100),
+	city NVARCHAR(MAX),
+	description NVARCHAR(MAX),
+	edu_from Date,
+	edu_to Date,
+	in_progress BIT
+);
+
+create TABLE language (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+	user_id int FOREIGN KEY REFERENCES user_data(id),
+    lang NVARCHAR (100) NOT NULL,
+    lvl NVARCHAR (100) NOT NULL,
+);
+
+create TABLE skill (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+	user_id int FOREIGN KEY REFERENCES user_data(id),
+    skill NVARCHAR(200) NOT NULL,
+    lvl INT NOT NULL,
+);

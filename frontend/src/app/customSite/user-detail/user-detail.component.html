@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<div class="text-center">
+  <h1 class="p-4 full-name">
+    {{ personal.firstName }} {{ personal.lastName }}
+  </h1>
+
+  <!-- contact and general -->
+  <div class="container-fluid p-3">
+    <div class="row">
+      <div class="col-6">
+        <h3>Contact Information</h3>
+        {{ personal.country }}, {{ personal.city }}
+        <br />
+        {{ personal.zip }} {{ personal.address1 }} {{ personal.address2 }}
+      </div>
+      <div class="col-6 ">
+        <h3>General Information</h3>
+        Birth: {{ birthday }}
+        <br />
+        Gender: {{ personal.gender }}
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t rounded-pill py-5">
+    <h3><strong>Education</strong></h3>
+    <div class="d-flex flex-wrap justify-content-center align-items-center">
+      <div class="education pt-3" *ngFor="let item of edu">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="flex-item icon-img w-25 h-25">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="2"
+              height="2"
+              fill="currentColor"
+              class="bi bi-book"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
+              />
+            </svg>
+          </div>
+          <div class="flex-item">
+            <ng-template [ngIf]="item.title">
+              <p>
+                <strong>{{ item.title }}</strong>
+              </p></ng-template
+            >
+            <ng-template [ngIf]="item.org">
+              <p>{{ item.org }}</p></ng-template
+            >
+            <p>
+              <ng-template [ngIf]="item.from">
+                {{ item.from.substring(0, 4) }}-</ng-template
+              >
+              <ng-template [ngIf]="item.to">{{
+                item.to.substring(0, 4)
+              }}</ng-template>
+            </p>
+            <ng-template [ngIf]="item.city"> {{ item.city }},</ng-template>
+            <ng-template [ngIf]="item.country"> {{ item.country }}</ng-template>
+            <ng-template [ngIf]="item.description">
+              <p>
+                {{ item.description }}
+              </p></ng-template
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- work -->
+  <div class="border-top rounded-pill work p-5">
+    <h3><strong>
+      Work Experience
+    </strong></h3>
+    <div class="d-flex flex-wrap justify-content-center align-items-center">
+    <div class="education pt-3" *ngFor="let item of work">
+      <div
+      class="d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="flex-item w-25 h-25">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+          <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+      </div>
+        <div>
+              <ng-template [ngIf]="item.position">
+        <p><strong>{{ item.position }} </strong> </p></ng-template>
+      <ng-template [ngIf]="item.employer">
+        <p>{{ item.employer }}</p></ng-template>
+        <p><ng-template [ngIf]="item.from">{{ item.from.substring(0,4)}}-</ng-template >
+      <ng-template [ngIf]="item.to">{{ item.to.substring(0,4)}}</ng-template></p>
+      <ng-template [ngIf]="item.city"> {{ item.city }},</ng-template>
+      <ng-template [ngIf]="item.country"> {{ item.country }}</ng-template>
+      <ng-template [ngIf]="item.description">
+        <p>{{ item.description }}</p></ng-template >
+
+        </div>
+    </div>
+  
+    </div>
+    </div>
+  </div>
+
+<!-- skills-->
+  <div class="my-5 big-padding">
+    <h3 class="pb-3"><strong>Skills</strong></h3>
+   <h4>
+     Spoken languages:
+   </h4> 
+    <div class="m-2" *ngFor="let item of langs">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="flex-item px-4 text-right">
+          <strong> {{item.language}}: </strong>
+        </div>
+        <div class="flex-item text-left">
+        {{item.level}}
+        </div>  
+    </div>
+    </div>
+  
+    <h4 class="py-3">
+      Other skills:
+    </h4>
+          <div class="pb-4" *ngFor="let item of skills">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="flex-item px-4 w-25 text-right">
+          <strong> {{item.skill}}: </strong>
+        </div>
+        <div class="flex-item ">
+          <ngb-progressbar type="dark" [value]="item.level*10" [striped]="true" [animated]="true"></ngb-progressbar>
+        </div>  
+    </div>
+    </div>
+  </div>
+
+</div>
