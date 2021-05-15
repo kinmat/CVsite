@@ -23,7 +23,9 @@ public class PersonalInfo {
     private Integer zip;
     private Date birthdate;
     private String gender;
+    private String phone;
     
+
 	public PersonalInfo() {	
 	}
 
@@ -142,6 +144,16 @@ public class PersonalInfo {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	@Column(name="phone")
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
     
 	
 }

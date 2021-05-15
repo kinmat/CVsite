@@ -32,6 +32,7 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 import { UserComponent } from './customSite/user/user.component';
 import { UserDetailComponent } from './customSite/user-detail/user-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -55,10 +56,13 @@ import { HomeComponent } from './components/home/home.component';
     EducationComponent,
     UserComponent,
     UserDetailComponent,
+    TemplatesComponent,
+    ExportOptionsComponent
 
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,

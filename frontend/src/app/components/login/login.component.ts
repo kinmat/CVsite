@@ -1,48 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserDataService } from 'src/app/services/user-data-service.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
-  users: User[];
   user: User;
+  combinationNotValid: boolean;
+  form: FormGroup;
 
-  constructor(private userService: UserDataService,private route: ActivatedRoute,
-    private router: Router,) {
-      this.user = new User()
-      
+  constructor(
+    private userService: UserDataService, private router: Router, private builder: FormBuilder) {
+    this.user = new User();
+    this.combinationNotValid = false;
+
   }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(data => {
-      this.users = data;
+    this.form = this.builder.group({
+    username: ['', [
+      Validators.required]],
+    password: ['', [
+      Validators.required]],
+  });}
+
+  onSubmit() {
+    this.userService.getUserByUsername(this.user.username).subscribe((data) => {
+      if (data == null) this.wrongUserReset();
+      else if (this.checkUser(data)) {
+        this.combinationNotValid = false;
+        this.userService.changeCurrentUser(data)
+        this.router.navigate(['/profile']);
+      }
     });
   }
 
-  onSubmit() {
-    const loginUser = this.findUser();
-    console.log(this.user);
-    console.log(loginUser);
-    if (loginUser != null) {
-      this.userService.changeLoggedInUser(loginUser);
-      this.router.navigate(['/profile']);
-    }
+  checkUser(data: User) {
+    if (this.user.password == data.password) return true;
+    this.wrongUserReset();
+    return false;
   }
 
-  findUser() {
-    for (var u of this.users) {
-      console.log(u);
-      if (u.username === this.user.username)
-        if (u.password === this.user.password)
-          return u; 
-    }
-    return null;
+  wrongUserReset() {
+    this.combinationNotValid = true;
+    this.user = new User();
   }
 
 }

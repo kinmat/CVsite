@@ -10,4 +10,5 @@ export class PersonalInfo {
     zip: number;
     birthdate: Date;
     gender: string;
+    phone: string;
 }

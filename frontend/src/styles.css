@@ -1,0 +1,17 @@
+.btn-custom {
+    background-color:#be4e63; 
+    color: white;
+}
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.text-custom {
+   color:  #be4e63;
+   font-size: large;
+}
+
+.text-custom:hover {
+    color:  #c90f31;
+ }

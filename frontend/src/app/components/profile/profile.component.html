@@ -1,3 +1,7 @@
-<div>
+<div class="p-3 d-flex flex-column justify-content-center align-items-center">
     <h2>Logged in as {{user.username}}</h2>
+    <button class="btn btn-custom p-3 m-3" (click)="goToWebsite()"><h6>Go to your CV website</h6></button>
+    <button class="btn btn-custom p-3 m-3" (click)="goToWebsite()"><h6>Download your CV in PDF</h6></button>
+    <button class="btn btn-custom p-3 m-3" (click)="downloadCV('DOCX')"><h6>Download your CV in DOCX</h6></button>
+    <button class="btn btn-danger p-3 m-3" routerLink="login" (click)="deleteUser()"><h6>Delete user</h6></button>
 </div>

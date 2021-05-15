@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
-
-  loggedInUser: User;
+  public loggedInUser= new Subject<User>();
   private url = 'http://localhost:8080/users/';
+  currentUser: User;
 
   constructor(private http: HttpClient) {
   }
@@ -27,10 +27,21 @@ export class UserDataService {
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`, {responseType: 'text'});
+    return this.http.delete(`${this.url}/${id}`);
   }
 
-  changeLoggedInUser(user: User) {
-    this.loggedInUser = user;
+  public getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/username/${username}`);
   }
+
+  getLoggedInUser() {
+    console.log(this.loggedInUser)
+    return this.loggedInUser.asObservable();
+  }
+
+  changeCurrentUser(user: User) {
+    this.currentUser = user;
+    this.loggedInUser.next(user);
+  }
+
 }

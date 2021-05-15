@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Rowdies');
 .btn-xlarge {
     padding: 18px 40px;
     font-size: 22px; 
@@ -6,3 +7,32 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
 }
+
+
+
+.number {
+    font-size: 80px;
+    font-family: 'Rowdies';
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #9c8366;
+}
+
+.label-text {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #9c8366;
+    font-weight: bold;
+}
+
+.column-1 {
+    background-color: #cea67954;
+}
+
+.column-2 {
+    background-color: #cea6799d;
+}
+
+.column-3 {
+    background-color: #cea679;
+}
+

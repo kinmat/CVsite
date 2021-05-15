@@ -14,7 +14,7 @@ import cvsite.model.Education;
 import cvsite.repo.EducationRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class EducationController {
 	
 	@Autowired

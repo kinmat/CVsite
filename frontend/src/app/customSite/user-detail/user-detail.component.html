@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-<div class="text-center">
+<div class="text-center" id="htmlData">
   <h1 class="p-4 full-name">
     {{ personal.firstName }} {{ personal.lastName }}
   </h1>
@@ -13,6 +13,8 @@
         {{ personal.country }}, {{ personal.city }}
         <br />
         {{ personal.zip }} {{ personal.address1 }} {{ personal.address2 }}
+        <br>
+        {{ personal.phone }} <br/> {{ user.email }}
       </div>
       <div class="col-6 ">
         <h3>General Information</h3>
@@ -139,5 +141,8 @@
     </div>
     </div>
   </div>
-
+</div>
+<div class="d-flex justify-content-center p-4">
+  <button class="m-2 btn btn-light btn-block shadow " (click)="downloadPDF()">Download CV in PDF</button>
+  <button class="m-2 btn btn-light btn-block shadow" (click)="downloadDocx()">Download CV in DOCX</button>
 </div>

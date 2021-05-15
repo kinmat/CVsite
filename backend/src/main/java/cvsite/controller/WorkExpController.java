@@ -15,7 +15,7 @@ import cvsite.repo.WorkExpRepository;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class WorkExpController {
 	
 	@Autowired

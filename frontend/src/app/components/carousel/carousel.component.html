@@ -1,20 +1,78 @@
 <div class="m-3 d-flex justify-content-center">
-  <button ngbNavLink routerLink="fill-form" type="button" class="btn btn-danger btn-block">Start now</button>
+  <button
+    ngbNavLink
+    routerLink="fill-form"
+    type="button"
+    class="m-4 p-2 btn btn-custom btn-block"
+  >
+    <h1>Start now</h1>
+  </button>
 </div>
 
-<div class="mx-5">
-  <ngb-carousel #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
-      <div class="carousel-caption">
-        <h3>My slide {{i + 1}} title</h3>
+<div class="row p-4">
+  <div class="col-md-4 col-sm-12">
+    <div
+      class="d-flex rounded flex-column justify-content-center align-items-center p-3 column-1"
+    >
+      <div class="number flex-item">1.</div>
+      <div class="flex-item label-text text-center">
+        Fill in your data according to the form
       </div>
-      <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-        <div class="picsum-img-wrapper">
-          <img [src]="img" alt="My image {{i + 1}} description">
-        </div>
-      </a>
-    </ng-template>
-  </ngb-carousel>
- 
+      <div class="flex-item p-2">
+        <button
+          ngbNavLink
+          routerLink="fill-form"
+          type="button"
+          class="btn btn-custom"
+        >
+          Start now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-12">
+    <div
+      class="d-flex rounded flex-column justify-content-center align-items-center p-3 column-2"
+    >
+      <div class="number flex-item">2.</div>
+      <div class="flex-item label-text text-center">
+        Choose from the templates
+      </div>
+      <div class="flex-item p-2">
+        <button
+          ngbNavLink
+          routerLink="templates"
+          type="button"
+          class="btn btn-custom"
+        >
+          Browse our templates
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-4 col-sm-12">
+    <div
+      class="d-flex rounded flex-column justify-content-center align-items-center p-3 column-3"
+    >
+      <div class="number flex-item">3.</div>
+      <div class="flex-item label-text text-center">
+        Done! <br> Use/export your CV
+      </div>
+      <div class="flex-item p-2">
+        <button
+          ngbNavLink
+          routerLink="export-options"
+          type="button"
+          class="btn btn-custom"
+        >
+          Export options
+        </button>
+      </div>
+    </div>
+  </div>
+
+
 </div>
- 

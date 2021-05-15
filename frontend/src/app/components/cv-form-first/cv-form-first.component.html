@@ -2,103 +2,235 @@
   <h1>1. Personal information</h1>
 </div>
 <div class="card">
-<div class="card-body">
-    <form (ngSubmit)="onSubmit()">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-              <label for="first-name">First name</label>
-              <input type="text" class="form-control" id="first-name"
-              [(ngModel)]="personal.firstName" name="firstName" placeholder="First name" required>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #personalForm="ngForm">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="first-name">First name*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            [(ngModel)]="personal.firstName"
+            #firstName="ngModel"
+            name="firstName"
+            placeholder="First name"
+            required
+          />
+          <div
+            *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="mt-2">
+            <div class="alert alert-danger" *ngIf="firstName.errors.required">First name is required.</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="last-name">Last name*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last-name"
+            [(ngModel)]="personal.lastName"
+            name="lastName"
+            #lastName="ngModel"
+            placeholder="Last name"
+            required
+          />
+          <div
+          *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="mt-2">
+          <div class="alert alert-danger" *ngIf="lastName.errors.required">Last name is required.</div>
+        </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="username">Username*</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
             </div>
-            <div class="col-md-4 mb-3">
-              <label for="last-name">Last name</label>
-              <input type="text" class="form-control" id="last-name" 
-              [(ngModel)]="personal.lastName" name="lastName" placeholder="Last name" required>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="username">Username</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroupPrepend">@</span>
-                </div>
-                <input [(ngModel)]="user.username"  type="text" name="username"
-                class="form-control" id="username" placeholder="Username" 
-                aria-describedby="inputGroupPrepend" required>
-              </div>
+            <input
+              [(ngModel)]="user.username"
+              type="text"
+              name="username"
+              class="form-control"
+              id="username"
+              #username="ngModel"
+              placeholder="Username"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
+          </div>
+            <div
+            *ngIf="username.invalid && (username.dirty || username.touched)" class="mt-2">
+            <div class="alert alert-danger" *ngIf="username.errors.required">Username is required.</div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email*</label>
+          <input
+            [(ngModel)]="user.email"
+            type="email"
+            name="email"
+            class="form-control"
+            id="inputEmail"
+            #email="ngModel"
+            placeholder="Email"
+            required
+          />
+          <div
+          *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2">
+          <div class="alert alert-danger" *ngIf="email.errors.required">Email is required.</div>
+        </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword">Password*</label>
+          <input
+            [(ngModel)]="user.password"
+            type="password"
+            name="password"
+            class="form-control"
+            #password="ngModel"
+            id="inputPassword"
+            placeholder="Password"
+            required
+          />
+          <div
+          *ngIf="password.invalid && (password.dirty || password.touched)" class="mt-2">
+          <div class="alert alert-danger" *ngIf="password.errors.required">Password is required.</div>
+        </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="personal.address1"
+          name="address1"
+          id="inputAddress"
+          placeholder="1234 Main St"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress2"
+          [(ngModel)]="personal.address2"
+          name="address2"
+          placeholder="Apartment, studio, or floor"
+        />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="personal.city"
+            name="city"
+            id="inputCity"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCountry">Country</label>
+          <select
+            [(ngModel)]="personal.country"
+            name="country"
+            id="inputCountry"
+            class="form-control"
+          >
+            <option *ngFor="let country of countryList" [value]="country">
+              {{ country }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input
+            [(ngModel)]="personal.zip"
+            name="zip"
+            type="text"
+            class="form-control"
+            id="inputZip"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputBirthdate">Birthdate</label>
+          <div class="input-group">
+            <input
+              id="inputBirthdate"
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              name="dp"
+              [(ngModel)]="model"
+              ngbDatepicker
+              #d="ngbDatepicker"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                (click)="d.toggle()"
+                type="button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-calendar3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                  />
+                  <path
+                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail">Email</label>
-                <input [(ngModel)]="user.email"  type="email" name="email"
-                class="form-control" id="inputEmail" placeholder="Email">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword">Password</label>
-                <input [(ngModel)]="user.password"  type="password" name="password"
-                 class="form-control" id="inputPassword" placeholder="Password">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Address</label>
-              <input type="text" class="form-control"  [(ngModel)]="personal.address1" name="address1"
-              id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2"
-              [(ngModel)]="personal.address2" name="address2"
-               placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control"
-                [(ngModel)]="personal.city" name="city" id="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputCountry">Country</label>
-                <select [(ngModel)]="personal.country" name="country" id="inputCountry" class="form-control">
-                  <option *ngFor="let country of countryList" [value]="country">{{country}}</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input  [(ngModel)]="personal.zip" name="zip"
-                 type="text" class="form-control" id="inputZip">
-              </div>
-            </div>  
-        <div class="form-row">
-            <div class="form-group col-md-4">         
-                    <label for="inputBirthdate">Birthdate</label>
-                <div class="input-group">               
-                  <input (ngModelChange)="select(model)" id="inputBirthdate" class="form-control" placeholder="yyyy-mm-dd"
-                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputGender">Gender</label>
-                <select  [(ngModel)]="personal.gender" name="gender" id="inputGender" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                  <option>Prefer not to say</option>
-                </select>
-            </div> 
         </div>
-               
-  <div class="m-2 justify-content-center">
-      <button type="submit" class="btn btn-primary">Next step</button>  
+        <div class="form-group col-md-4">
+          <label for="inputGender">Gender</label>
+          <select
+            [(ngModel)]="personal.gender"
+            name="gender"
+            id="inputGender"
+            class="form-control"
+          >
+            <option selected>Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="last-name">Phone number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            [(ngModel)]="personal.phone"
+            name="phone"
+            placeholder="Phone number"
+          />
+        </div>
+      </div>
+      <div class="custom-file">
+        <input type="file"
+        (change)="onFileChanged($event)" id="photo">
+        <label class="custom-file-label" for="photo">Choose a photo of  you...</label>
+      </div>
+
+      <div class="m-2 justify-content-center">
+        <button type="submit" class="btn btn-custom" [disabled]="!personalForm.form.valid" >Next step</button>
+      </div>
+    </form>
   </div>
-</form>
-</div>
 </div>

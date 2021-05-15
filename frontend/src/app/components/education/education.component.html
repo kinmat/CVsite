@@ -17,7 +17,7 @@
                         <label for="dpFrom">From</label>
                         <div class="input-group">
                           <input class="form-control" placeholder="yyyy-mm-dd"
-                                 name="dpFrom" [(ngModel)]="fromDate" (dateSelect)="onFromSelection($event)" ngbDatepicker #dpFrom="ngbDatepicker">
+                                 name="dpFrom" [(ngModel)]="fromDate" ngbDatepicker #dpFrom="ngbDatepicker">
                           <div class="input-group-append">
                             <button class="btn btn-outline-secondary calendar" (click)="dpFrom.toggle()" type="button"></button>
                           </div>
@@ -27,7 +27,7 @@
                           <label for="dpTo">To</label>
                             <div class="input-group">
                           <input class="form-control" placeholder="yyyy-mm-dd"
-                                 name="dpTo" [(ngModel)]="toDate" (dateSelect)="onToSelection($event)" ngbDatepicker #dpTo="ngbDatepicker">
+                                 name="dpTo" [(ngModel)]="toDate"  ngbDatepicker #dpTo="ngbDatepicker">
                           <div class="input-group-append">
                             <button class="btn btn-outline-secondary calendar" (click)="dpTo.toggle()" type="button"></button>
                           </div>

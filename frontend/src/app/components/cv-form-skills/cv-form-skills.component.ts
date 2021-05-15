@@ -20,11 +20,7 @@ export class CvFormSkillsComponent implements OnInit {
   userId: number;
 
   constructor(private userService: UserDataService, private router: Router, private skillService: SkillLangService) { 
-    this.userId = userService.loggedInUser.id;
-/* userService.getUser(1).subscribe(data => {
-      userService.changeLoggedInUser(data);
-    });
-    */
+    this.userId=this.userService.currentUser.id
     this.resetLang();
     this.resetSkill();
     }

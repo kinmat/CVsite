@@ -13,7 +13,7 @@ import cvsite.repo.PersonalInfoRepository;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class PersonalInfoController {
 	
 	@Autowired

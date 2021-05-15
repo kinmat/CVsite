@@ -55,7 +55,7 @@ h1 {
 .work {
     background-color: rgba(83, 37, 107, 0.603);
     color: white;
-    text-shadow: 2px 2px #000000b0;
+    text-shadow: 2px 2px 5px #000000b0;
 }
 
 .big-padding {

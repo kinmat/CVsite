@@ -16,7 +16,7 @@ import cvsite.repo.LangRepository;
 import cvsite.repo.SkillRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class SkillLangController {
 	
 	@Autowired

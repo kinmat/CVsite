@@ -3,7 +3,7 @@ package cvsite.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +14,7 @@ import cvsite.model.UserData;
 import cvsite.repo.UserDataRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class UserDataController {
 	
 	@Autowired
@@ -34,7 +34,17 @@ public class UserDataController {
     public UserData addUser(@RequestBody UserData user){
     	return userDataRepo.save(user);
     }
+    
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable("id") Long id) {
+		userDataRepo.deleteById(id);
+    }
+    
    
+    @RequestMapping("/users/username/{username}")
+    public UserData getUserByUsername(@PathVariable("username") String username) {
+        return userDataRepo.getByUsername(username);
+    }
 
 }
 
